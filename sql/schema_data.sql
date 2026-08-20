@@ -213,4 +213,4 @@ INSERT INTO WaterEvent (WEventID, AreaID, StaffID, SensorID, WaterTypeID, Volume
 (1, 1, 2, 2, 1, 1500.00),
 (2, 2, 3, 1, 2, 2000.00),
 (3, 3, 4, 4, 3, 500.00),
-(4, 4, 2, 2, 1, 3000.00),
+(4, 4, 2, 2, 1, 3000.00);
