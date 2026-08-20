@@ -15,7 +15,7 @@ CREATE TABLE Species (
 
 CREATE TABLE Plant (
     PlantID INT PRIMARY KEY,
-    SensorID INT NOT NULL,
+    SensorID INT,
     SpeciesID INT NOT NULL,
     PlantGPS VARCHAR(50) NOT NULL,
     QRCode VARCHAR(100) UNIQUE,
@@ -182,12 +182,12 @@ CREATE TABLE Supplier (
 );
 
 CREATE TABLE Supplier_Inventory (
+    SupplyTransactionID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
     SupplierID INT NOT NULL,
     InventoryID INT,
     EquipmentID INT,
     Type VARCHAR(20) NOT NULL CHECK (Type IN ('Inventory', 'Equipment')),
     PaymentMode VARCHAR(20) NOT NULL CHECK (PaymentMode IN ('Cash', 'Credit', 'Online')),
-    PRIMARY KEY (SupplierID, InventoryID, EquipmentID),
     FOREIGN KEY (SupplierID) REFERENCES Supplier (SupplierID) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (InventoryID) REFERENCES Inventory (InventoryID) ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY (EquipmentID) REFERENCES Equipment (EquipmentID) ON UPDATE CASCADE ON DELETE SET NULL

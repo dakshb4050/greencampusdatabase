@@ -1,7 +1,3 @@
--- ==========================================
--- 1. INDEPENDENT TABLES (No Foreign Keys)
--- ==========================================
-
 INSERT INTO Sensor (SensorID, Type, DataType, LastReading, Status) VALUES
 (1, 'Temperature', 'Celsius', 32.5, 'Active'),
 (2, 'Soil Moisture', 'Percentage', 45.0, 'Active'),
@@ -87,10 +83,7 @@ INSERT INTO WaterType (WaterTypeID, Source, Method) VALUES
 (3, 'Municipal Supply', 'Hose'),
 (4, 'Recycled Water', 'Drip Irrigation');
 
--- ==========================================
--- 2. FIRST-LEVEL DEPENDENT TABLES
--- ==========================================
-
+-- 2.2 First-Level Dependent Tables
 INSERT INTO Plant (PlantID, SensorID, SpeciesID, PlantGPS, QRCode, Age, Height) VALUES
 (1, 1, 1, '23.2157° N, 72.6370° E', 'QR-NEEM-001', 36, 450.50),
 (2, 2, 2, '23.2158° N, 72.6371° E', 'QR-TULSI-002', 6, 45.00),
@@ -122,10 +115,7 @@ INSERT INTO Weather (WeatherID, SensorID, ReadingDate, Temperature, Humidity, Ra
 (4, 6, '2026-08-19', 30.5, 58.0, 12.4, 18.2, 35.0),
 (5, 5, '2026-08-19', 29.0, 75.0, 25.0, 8.5, 30.0);
 
--- ==========================================
--- 3. SECOND-LEVEL DEPENDENT TABLES
--- ==========================================
-
+-- 2.3 Second-Level Dependent Tables
 INSERT INTO Plant_Area (AreaID, PlantID) VALUES
 (1, 1),
 (1, 2),
@@ -185,10 +175,7 @@ INSERT INTO Energy (EnergyID, StaffID) VALUES
 (4, 1),
 (5, 4);
 
--- ==========================================
--- 4. THIRD-LEVEL DEPENDENT TABLES
--- ==========================================
-
+-- 2.4 Third-Level Dependent Tables
 INSERT INTO Task (TaskID, StaffID, EquipmentID, Type, DueDate, Status, Description) VALUES
 (1, 2, 1, 'Routine', '2026-08-20', 'Pending', 'Mow Area 1 main lawn'),
 (2, 3, 2, 'Urgent', '2026-08-19', 'Delayed', 'Fix broken sprinkler system in Area 2'),
@@ -227,4 +214,3 @@ INSERT INTO WaterEvent (WEventID, AreaID, StaffID, SensorID, WaterTypeID, Volume
 (2, 2, 3, 1, 2, 2000.00),
 (3, 3, 4, 4, 3, 500.00),
 (4, 4, 2, 2, 1, 3000.00),
-(5, 5, 4, 7, 4, 800.00);
